@@ -1,4 +1,4 @@
-# 🚌 Barya-CLI — Filipino Commuter Fare Survival Agent
+# 🚌 Barya-Pamasahe Calculator
 
 > **Terminal-based AI agent** that calculates the financial impact of the 2026 jeepney fare crisis, compares rail alternatives, and generates legal + AI-powered commuter advice.
 
