@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fil">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Barya — Libreng commute guide para sa Metro Manila. Alamin ang tamang pamasahe, exact na daan, at iyong mga karapatan bilang pasahero." />
+  <title>Barya · Commute Guide ng Metro Manila 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ═══════════════════════════════ HEADER ══════════════════════ -->
+<header class="header" id="top">
+  <div class="header-inner">
+    <div class="logo">
+      <span class="logo-coin">🪙</span>
+      <div class="logo-text">
+        <span class="logo-name">Barya</span>
+        <span class="logo-sub">Metro Manila Commute Guide</span>
+      </div>
+    </div>
+    <div class="header-pill">
+      <span class="live-dot"></span>
+      50% Rail Discount · Live!
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════ SEARCH ══════════════════════ -->
+<section class="search-wrap" id="searchWrap">
+  <div class="search-container">
+    <div class="search-headline">
+      <h1>Saan ka <span class="hl">pupunta</span>?</h1>
+      <p>I-type lang ang simula at destinasyon — bibigyan ka ng eksaktong daan, tamang bayad, at iyong mga karapatan.</p>
+    </div>
+
+    <div class="search-card">
+      <!-- FROM -->
+      <div class="field">
+        <div class="field-dot dot-from"></div>
+        <div class="field-body">
+          <label class="field-label" for="fromInput">Simula</label>
+          <div class="ac-wrap">
+            <input id="fromInput" class="field-input" type="text"
+              placeholder="Hal: Cubao, Fairview, Monumento…"
+              autocomplete="off" spellcheck="false" />
+            <div class="ac-dropdown" id="fromDrop"></div>
+          </div>
+        </div>
+      </div>
+
+      <button class="swap-btn" id="swapBtn" aria-label="I-swap">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 16V4m0 0L3 8m4-4l4 4M17 8v12m0 0l4-4m-4 4l-4-4"/></svg>
+      </button>
+
+      <!-- TO -->
+      <div class="field">
+        <div class="field-dot dot-to"></div>
+        <div class="field-body">
+          <label class="field-label" for="toInput">Destinasyon</label>
+          <div class="ac-wrap">
+            <input id="toInput" class="field-input" type="text"
+              placeholder="Hal: Divisoria, Makati, Taft…"
+              autocomplete="off" spellcheck="false" />
+            <div class="ac-dropdown" id="toDrop"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI KEY (collapsible) -->
+      <details class="ai-details">
+        <summary>🤖 I-enable ang AI Recommendations <span class="optional-tag">Optional</span></summary>
+        <div class="ai-key-row">
+          <input id="apiKey" type="password" class="ai-key-input"
+            placeholder="Gemini API Key" autocomplete="off" />
+          <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener" class="key-link">Kumuha ng libreng key ↗</a>
+        </div>
+      </details>
+
+      <button class="go-btn" id="goBtn">
+        ⚡&nbsp;&nbsp;Hanapin ang Daan Ko
+      </button>
+    </div>
+
+    <!-- Quick Routes -->
+    <div class="quick-routes">
+      <span class="qr-label">Sikat na ruta:</span>
+      <div class="qr-scroller">
+        <button class="qr-chip" data-from="Cubao" data-to="Divisoria">Cubao → Divisoria</button>
+        <button class="qr-chip" data-from="Fairview" data-to="Cubao">Fairview → Cubao</button>
+        <button class="qr-chip" data-from="Antipolo" data-to="Recto">Antipolo → Recto</button>
+        <button class="qr-chip" data-from="Novaliches" data-to="Quiapo">Novaliches → Quiapo</button>
+        <button class="qr-chip" data-from="Caloocan" data-to="Manila">Caloocan → Manila</button>
+        <button class="qr-chip" data-from="Pasay" data-to="Makati">Pasay → Makati</button>
+        <button class="qr-chip" data-from="Marikina" data-to="Cubao">Marikina → Cubao</button>
+        <button class="qr-chip" data-from="Valenzuela" data-to="Manila">Valenzuela → Manila</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ LOADING ══════════════════════ -->
+<section class="loading-wrap" id="loadingWrap" hidden>
+  <div class="loading-card">
+    <div class="loading-bus">🚌</div>
+    <p class="loading-msg">Hinahanap ang pinakamainam na daan…</p>
+    <div class="loading-track"><div class="loading-bar"></div></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ RESULTS ══════════════════════ -->
+<section class="results-wrap" id="resultsWrap" hidden>
+
+  <!-- Route Hero -->
+  <div class="route-hero" id="routeHero"></div>
+
+  <div class="results-inner">
+
+    <!-- ① HOW TO GET THERE -->
+    <div class="result-block">
+      <h2 class="block-title">🗺️ Paano Pumunta</h2>
+      <p class="block-desc">Piling pinaka-<strong>mura</strong> at pinaka-<strong>mabilis</strong> para sa iyong ruta:</p>
+      <div id="directionsWrap"></div>
+    </div>
+
+    <!-- ② ALL FARES -->
+    <div class="result-block">
+      <h2 class="block-title">💰 Lahat ng Pagpipilian</h2>
+      <p class="block-desc">Legal na presyo ngayon (Abril 2026). <strong>Huwag magbayad ng higit pa rito.</strong></p>
+      <div id="faresWrap"></div>
+    </div>
+
+    <!-- ③ MONTHLY IMPACT -->
+    <div class="result-block">
+      <h2 class="block-title">📅 Epekto sa iyong Buwanang Budget</h2>
+      <p class="block-desc">Batay sa 22 araw trabaho bawat buwan, balikan.</p>
+      <div id="impactWrap"></div>
+    </div>
+
+    <!-- ④ PISTON WARNING -->
+    <div class="result-block" id="pistonWrap"></div>
+
+    <!-- ⑤ YOUR RIGHTS -->
+    <div class="result-block">
+      <h2 class="block-title">⚖️ Ang Iyong mga Karapatan</h2>
+      <div class="rights-stack" id="rightsStack">
+        <div class="right-card">
+          <div class="right-num">1</div>
+          <div class="right-body">
+            <div class="right-rule">Dapat may <strong>Fare Matrix</strong> na nakapaskil sa loob ng jeepney. Ito ay batas.</div>
+            <div class="right-action">Kung wala — <strong>may karapatan kang huwag magbayad ng dagdag.</strong></div>
+          </div>
+        </div>
+        <div class="right-card">
+          <div class="right-num">2</div>
+          <div class="right-body">
+            <div class="right-rule">Ang magsalita sa driver:</div>
+            <div class="right-script">"Manong, may Fare Matrix po ba kayo? Wala pong nakapaskil — hindi po kayo pwedeng mangsingil ng higit sa legal na bayad."</div>
+          </div>
+        </div>
+        <div class="right-card">
+          <div class="right-num">3</div>
+          <div class="right-body">
+            <div class="right-rule">Magreklamo dito kung overcharged ka:</div>
+            <div class="hotlines">
+              <a class="hotline-pill" href="tel:028426-2515">📞 LTFRB: 8426-2515</a>
+              <a class="hotline-pill" href="tel:8888">📞 8888 Citizen</a>
+              <span class="hotline-pill">📱 SMS: DOTR to 2919</span>
+              <a class="hotline-pill" href="tel:136">📞 MMDA: 136</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑥ AI -->
+    <div class="result-block" id="aiBlock" hidden>
+      <h2 class="block-title">🤖 AI Diskarte</h2>
+      <div class="ai-card" id="aiCard">
+        <div class="ai-loading" id="aiLoading">
+          <span class="ai-bus">🚌</span>
+          <span>Nag-iisip si Gemini…</span>
+        </div>
+        <div class="ai-output" id="aiOutput" hidden></div>
+      </div>
+    </div>
+
+    <button class="reset-btn" id="resetBtn">↩ Maghanap ng Ibang Ruta</button>
+
+  </div><!-- /results-inner -->
+</section>
+
+<!-- ═══════════════════════════════ FOOTER ═══════════════════════ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <span>🪙 <strong>Barya</strong> · Datos: LTFRB, DOTR, DOLE</span>
+    <span class="footer-sep">·</span>
+    <span>⚠️ ₱23 PISTON petition — hindi pa aprubado. ₱14 ang legal na base fare.</span>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

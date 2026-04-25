@@ -1,0 +1,144 @@
+{
+  "_meta": {
+    "source": "LTFRB/DOTR Official Rates | LRT-2 & MRT-3 50% Discount effective March 23, 2026",
+    "last_updated": "2026-04-25",
+    "note": "50% discount on MRT-3 and LRT-2 fares signed into law March 2026 (Republic Act implementing discount). Jeepney rates per LTFRB MC 2024-011."
+  },
+  "jeepney": {
+    "traditional": {
+      "label": "Traditional Jeepney (Conventional)",
+      "base_fare": 14.00,
+      "base_km": 4,
+      "per_succeeding_km": 2.00,
+      "effective_date": "March 2026",
+      "source": "LTFRB MC 2024-011"
+    },
+    "modern": {
+      "label": "Modern/E-Jeepney (PUV Modernization)",
+      "base_fare": 17.00,
+      "base_km": 4,
+      "per_succeeding_km": 2.40,
+      "effective_date": "March 2026",
+      "source": "LTFRB MC 2024-011"
+    },
+    "piston_petition": {
+      "label": "PISTON Proposed Fare (PENDING - Not yet approved)",
+      "proposed_base_fare": 23.00,
+      "base_km": 4,
+      "per_succeeding_km": 2.00,
+      "petition_date": "April 20, 2026",
+      "status": "PENDING — LTFRB has NOT approved this. Filing only.",
+      "petitioner": "PISTON (Pagkakaisa ng mga Samahan ng Tsuper at Operators Nationwide)"
+    }
+  },
+  "lrt2": {
+    "label": "LRT Line 2 (East-West Line)",
+    "discount_active": true,
+    "discount_percent": 50,
+    "discount_effective": "March 23, 2026",
+    "operator": "LRTA (Light Rail Transit Authority)",
+    "stations": [
+      "Antipolo", "Marikina-Pasig", "Santolan", "Katipunan",
+      "Anonas", "Araneta Center-Cubao", "Betty Go-Belmonte",
+      "Gilmore", "J. Ruiz", "V. Mapa", "Pureza", "Legarda", "Recto"
+    ],
+    "total_stations": 13,
+    "fare_matrix": {
+      "note": "Fares below are DISCOUNTED (50% off) as of March 23, 2026. Original fares in parentheses.",
+      "minimum_fare_discounted": 15.00,
+      "minimum_fare_original": 30.00,
+      "maximum_fare_discounted": 32.00,
+      "maximum_fare_original": 64.00,
+      "station_fares": {
+        "Antipolo_to_Recto": {"discounted": 32.00, "original": 64.00},
+        "Antipolo_to_Legarda": {"discounted": 30.00, "original": 60.00},
+        "Antipolo_to_Pureza": {"discounted": 28.00, "original": 56.00},
+        "Antipolo_to_V_Mapa": {"discounted": 26.00, "original": 52.00},
+        "Antipolo_to_J_Ruiz": {"discounted": 24.00, "original": 48.00},
+        "Antipolo_to_Gilmore": {"discounted": 23.00, "original": 46.00},
+        "Antipolo_to_Betty_Go": {"discounted": 22.00, "original": 44.00},
+        "Antipolo_to_Cubao": {"discounted": 20.00, "original": 40.00},
+        "Antipolo_to_Anonas": {"discounted": 18.00, "original": 36.00},
+        "Antipolo_to_Katipunan": {"discounted": 17.00, "original": 34.00},
+        "Antipolo_to_Santolan": {"discounted": 15.00, "original": 30.00},
+        "Santolan_to_Recto": {"discounted": 25.00, "original": 50.00},
+        "Cubao_to_Recto": {"discounted": 18.00, "original": 36.00},
+        "Cubao_to_Legarda": {"discounted": 16.00, "original": 32.00},
+        "Legarda_to_Recto": {"discounted": 15.00, "original": 30.00},
+        "Santolan_to_Cubao": {"discounted": 15.00, "original": 30.00},
+        "adjacent_stations": {"discounted": 15.00, "original": 30.00}
+      }
+    },
+    "key_routes": {
+      "Cubao_to_Recto": {
+        "stations_traversed": 7,
+        "discounted_fare": 18.00,
+        "original_fare": 36.00,
+        "travel_time_mins": "15-20"
+      },
+      "Santolan_to_Recto": {
+        "stations_traversed": 10,
+        "discounted_fare": 25.00,
+        "original_fare": 50.00,
+        "travel_time_mins": "30-35"
+      }
+    }
+  },
+  "mrt3": {
+    "label": "MRT Line 3 (North-South Commuter Rail)",
+    "discount_active": true,
+    "discount_percent": 50,
+    "discount_effective": "March 23, 2026",
+    "operator": "DOTR / Busan Transportation Corporation",
+    "stations": [
+      "North Avenue", "Quezon Avenue", "GMA-Kamuning", "Araneta Center-Cubao",
+      "Santolan-Anapolis", "Ortigas", "Shaw Boulevard", "Boni",
+      "Guadalupe", "Buendia", "Ayala", "Magallanes", "Taft Avenue"
+    ],
+    "total_stations": 13,
+    "fare_matrix": {
+      "note": "Fares below are DISCOUNTED (50% off) as of March 23, 2026.",
+      "minimum_fare_discounted": 14.00,
+      "minimum_fare_original": 28.00,
+      "maximum_fare_discounted": 32.00,
+      "maximum_fare_original": 64.00,
+      "station_fares": {
+        "North_Ave_to_Taft": {"discounted": 32.00, "original": 64.00},
+        "North_Ave_to_Magallanes": {"discounted": 30.00, "original": 60.00},
+        "North_Ave_to_Ayala": {"discounted": 27.00, "original": 54.00},
+        "North_Ave_to_Buendia": {"discounted": 24.00, "original": 48.00},
+        "North_Ave_to_Guadalupe": {"discounted": 22.00, "original": 44.00},
+        "North_Ave_to_Boni": {"discounted": 20.00, "original": 40.00},
+        "North_Ave_to_Shaw": {"discounted": 18.00, "original": 36.00},
+        "North_Ave_to_Ortigas": {"discounted": 17.00, "original": 34.00},
+        "North_Ave_to_Cubao": {"discounted": 16.00, "original": 32.00},
+        "North_Ave_to_Kamuning": {"discounted": 15.00, "original": 30.00},
+        "North_Ave_to_QA": {"discounted": 14.00, "original": 28.00},
+        "Cubao_to_Taft": {"discounted": 25.00, "original": 50.00},
+        "Cubao_to_Ayala": {"discounted": 20.00, "original": 40.00},
+        "Cubao_to_Shaw": {"discounted": 15.00, "original": 30.00},
+        "adjacent_stations": {"discounted": 14.00, "original": 28.00}
+      }
+    },
+    "key_routes": {
+      "North_Ave_to_Taft": {
+        "stations_traversed": 13,
+        "discounted_fare": 32.00,
+        "original_fare": 64.00,
+        "travel_time_mins": "35-45"
+      },
+      "Cubao_to_Ayala": {
+        "stations_traversed": 8,
+        "discounted_fare": 20.00,
+        "original_fare": 40.00,
+        "travel_time_mins": "20-25"
+      }
+    }
+  },
+  "minimum_wage_ncr": {
+    "daily_rate": 610.00,
+    "monthly_rate_22days": 13420.00,
+    "effective_date": "2025",
+    "source": "DOLE - NCR Daily Minimum Wage"
+  }
+}
